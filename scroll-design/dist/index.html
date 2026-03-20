@@ -1,18 +1,285 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="de">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta
-      name="description"
-      content="Scroll-Design der Schreinerei A. von Atzigen AG mit React, GSAP und Lenis."
-    />
-    <title>Schreinerei A. von Atzigen AG | Scroll Design</title>
-    <script type="module" crossorigin src="./assets/index-DVaCqZaq.js"></script>
-    <link rel="stylesheet" crossorigin href="./assets/index-BoygTYFe.css">
-  </head>
-  <body>
-    <div id="root"></div>
-  </body>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Scroll-Design der Schreinerei A. von Atzigen AG mit GSAP und sanften Scroll-Animationen.">
+  <title>Schreinerei A. von Atzigen AG | Scroll Design</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Sora:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="icon" href="./design-assets/logo-atzigen.png">
+  <link rel="stylesheet" href="./app.css">
+</head>
+<body>
+  <div class="scroll-app">
+    <div class="scroll-progress" aria-hidden="true">
+      <div class="scroll-progress__fill"></div>
+    </div>
+
+    <header class="motion-nav">
+      <a class="motion-nav__brand" href="#home" aria-label="Home">
+        <img src="./design-assets/logo-atzigen.png" alt="Logo A. von Atzigen AG">
+        <span>
+          <strong>A. von Atzigen AG</strong>
+          <small>Scroll Design</small>
+        </span>
+      </a>
+      <nav class="motion-nav__links" aria-label="Seitennavigation">
+        <a href="#home">Home</a>
+        <a href="#leistungen">Leistungen</a>
+        <a href="#spezial">Spezialaufträge</a>
+        <a href="#ueber-uns">Über uns</a>
+        <a href="#kontakt">Kontakt</a>
+      </nav>
+      <a class="motion-nav__switch" href="../../index.html">Klassische Website</a>
+    </header>
+
+    <main>
+      <section class="motion-hero" id="home">
+        <iframe class="motion-hero__shader" src="./design-assets/hero-shader.html" title="Dekorativer Hintergrund"></iframe>
+        <div class="motion-hero__overlay"></div>
+        <div class="motion-hero__inner">
+          <div class="motion-hero__copy-wrap">
+            <span class="motion-hero-eyebrow">Seit 1928 in Alpnach Dorf</span>
+            <h1 class="motion-hero-title">Möbel, Ausbau und Spezialarbeiten aus Holz.</h1>
+            <p class="motion-hero-copy">
+              Wir planen und fertigen Lösungen nach Mass. Ob Innenausbau, Ergänzungen zu bestehendem Mobiliar,
+              Türen und Schliessanlagen oder Ausbauten für Camping-Häuser: Wir arbeiten sauber, direkt und mit Blick auf das Praktische.
+            </p>
+            <div class="motion-hero-actions">
+              <a href="#kontakt">Projekt besprechen</a>
+              <a href="#leistungen">Leistungen ansehen</a>
+            </div>
+          </div>
+
+          <aside class="motion-hero-card">
+            <img src="./design-assets/baumkantentisch.jpg" alt="Massivholztisch">
+            <div class="motion-hero-card__meta">
+              <span>Individuelle Ausführung</span>
+              <strong>Möbel nach Mass, passend zum Raum und zum Alltag.</strong>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <section class="motion-strip stagger-group">
+        <article class="motion-strip__item stagger-item">
+          <strong>1928</strong>
+          <span>Als Familienbetrieb gegründet, heute in dritter Generation geführt.</span>
+        </article>
+        <article class="motion-strip__item stagger-item">
+          <strong>Massarbeit</strong>
+          <span>Möbel, Einbauten und Anpassungen für Wohnen, Bad, Essen und Stauraum.</span>
+        </article>
+        <article class="motion-strip__item stagger-item">
+          <strong>Tür &amp; Schloss</strong>
+          <span>Mechanische Schliessanlagen, Reparaturen und Türnotöffnungen.</span>
+        </article>
+        <article class="motion-strip__item stagger-item">
+          <strong>Camping</strong>
+          <span>Umbauten, Verkleidungen und Vorbauten unter Berücksichtigung der Vorgaben.</span>
+        </article>
+      </section>
+
+      <section class="motion-section motion-section--intro" id="leistungen">
+        <div class="motion-heading reveal">
+          <span>Was wir machen</span>
+          <h2>Ein kleiner Betrieb mit klarer Arbeit.</h2>
+        </div>
+        <div class="motion-copy reveal">
+          <p>
+            Die Schreinerei A. von Atzigen AG übernimmt Aufträge, bei denen Erfahrung, Sorgfalt und eine gute Werkstatt gefragt sind.
+            Wir nehmen Mass vor Ort, beraten nüchtern und fertigen so, dass das Ergebnis langfristig passt.
+          </p>
+          <ul class="motion-list">
+            <li>Möbel nach Mass für bestehende Räume und schwierige Grundrisse.</li>
+            <li>Innenausbau und Einbauten für Wohnen, Bad, Essen und Stauraumlösungen.</li>
+            <li>Mechanische Schliessanlagen, Zylinderwechsel, Reparaturen und Notöffnungen.</li>
+            <li>Spezialaufträge für Camping-Häuser, Vorbauten und individuelle Holzkonstruktionen.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="motion-grid stagger-group">
+        <article class="motion-card motion-card--service stagger-item">
+          <div class="motion-card__image-wrap">
+            <img class="parallax-media" src="./design-assets/raumteiler.jpg" alt="Möbel nach Mass">
+          </div>
+          <div class="motion-card__body">
+            <span>Möbel nach Mass</span>
+            <h3>Möbel nach Mass</h3>
+            <p>Schränke, Tische, Ergänzungen und individuelle Lösungen, exakt auf Raum und Nutzung abgestimmt.</p>
+          </div>
+        </article>
+        <article class="motion-card motion-card--service stagger-item">
+          <div class="motion-card__image-wrap">
+            <img class="parallax-media" src="./design-assets/tueren.jpg" alt="Schliessanlagen und Türen">
+          </div>
+          <div class="motion-card__body">
+            <span>Schliessanlagen &amp; Türen</span>
+            <h3>Schliessanlagen &amp; Türen</h3>
+            <p>Mechanische Schliesssysteme, Reparaturen, Ersatz und Türnotöffnungen bei Bedarf.</p>
+          </div>
+        </article>
+        <article class="motion-card motion-card--service stagger-item">
+          <div class="motion-card__image-wrap">
+            <img class="parallax-media" src="./design-assets/camping-haus.jpg" alt="Spezialaufträge">
+          </div>
+          <div class="motion-card__body">
+            <span>Spezialaufträge</span>
+            <h3>Spezialaufträge</h3>
+            <p>Umbauten und Auskleidungen für Camping-Häuser und Vorbauten, praxisgerecht umgesetzt.</p>
+          </div>
+        </article>
+      </section>
+
+      <section class="motion-section motion-section--split" id="spezial">
+        <div class="motion-copy reveal">
+          <span class="motion-label">Spezialaufträge</span>
+          <h2>Camping-Häuser, Vorbauten und Holzarbeiten mit Augenmass.</h2>
+          <p>
+            Wir haben uns bei Campingplatz-Bewohnern einen Namen gemacht. Ob Umbau, Auskleidung oder Vorbau:
+            Wir setzen die Wünsche so um, dass das Ergebnis zum Ort, zum Reglement und zum Alltag auf dem Platz passt.
+          </p>
+        </div>
+        <div class="panel-quote">Gerade auf engem Raum braucht es gute Proportionen und saubere Details.</div>
+      </section>
+
+      <section class="motion-grid motion-grid--projects stagger-group">
+        <article class="motion-card motion-card--project stagger-item">
+          <div class="motion-card__image-wrap">
+            <img class="parallax-media" src="./design-assets/baumkantentisch.jpg" alt="Tisch nach Wunsch">
+          </div>
+          <div class="motion-card__body">
+            <span>Massivholz</span>
+            <h3>Tisch nach Wunsch</h3>
+            <p>Einzelstücke mit ruhiger Formensprache und Augenmerk auf Materialcharakter und Gebrauch.</p>
+          </div>
+        </article>
+        <article class="motion-card motion-card--project stagger-item">
+          <div class="motion-card__image-wrap">
+            <img class="parallax-media" src="./design-assets/camping-umbau.jpg" alt="Umbau und Auskleidung">
+          </div>
+          <div class="motion-card__body">
+            <span>Spezialauftrag</span>
+            <h3>Umbau und Auskleidung</h3>
+            <p>Holzkonstruktionen und Verkleidungen für Campinganlagen, angepasst an Vorgaben und Platzverhältnisse.</p>
+          </div>
+        </article>
+        <article class="motion-card motion-card--project stagger-item">
+          <div class="motion-card__image-wrap">
+            <img class="parallax-media" src="./design-assets/waschtisch.jpg" alt="Einbau im Bestand">
+          </div>
+          <div class="motion-card__body">
+            <span>Nach Mass</span>
+            <h3>Einbau im Bestand</h3>
+            <p>Passgenaue Lösungen für Räume, in denen Millimeter und saubere Anschlüsse wichtig sind.</p>
+          </div>
+        </article>
+      </section>
+
+      <section class="motion-section motion-section--process">
+        <div class="motion-copy reveal">
+          <span class="motion-label">Arbeitsweise</span>
+          <h2>Beratung, Aufnahme, saubere Ausführung.</h2>
+          <p>
+            Viele Arbeiten beginnen mit einer Besichtigung vor Ort. So stimmen die Masse, Anschlüsse und Übergänge.
+            Wir halten den Ablauf übersichtlich und setzen lieber auf gute Vorbereitung als auf grosse Versprechen.
+          </p>
+        </div>
+        <div class="motion-steps stagger-group">
+          <article class="motion-step stagger-item">
+            <strong>1</strong>
+            <p>Vor-Ort-Termin für Massaufnahme und Abklärung der Details.</p>
+          </article>
+          <article class="motion-step stagger-item">
+            <strong>2</strong>
+            <p>Vorschlag mit praktikabler Lösung und passender Materialwahl.</p>
+          </article>
+          <article class="motion-step stagger-item">
+            <strong>3</strong>
+            <p>Fertigung in der eigenen Werkstatt und Einbau vor Ort.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="motion-section motion-section--story" id="ueber-uns">
+        <div class="motion-heading reveal">
+          <span>Über uns</span>
+          <h2>Ein Familienbetrieb, der in Alpnach geblieben ist.</h2>
+        </div>
+        <div class="motion-copy reveal">
+          <p>
+            Die Firma wurde 1928 vom Grossvater als Wagnerei gegründet. Später führte der Vater den Betrieb weiter und baute ihn zur
+            Schreinerei aus. Heute wird die A. von Atzigen AG in dritter Generation von gelernten Schreinern weitergeführt.
+          </p>
+        </div>
+      </section>
+
+      <section class="motion-grid motion-grid--timeline stagger-group">
+        <article class="motion-card motion-card--timeline stagger-item">
+          <div class="motion-card__body">
+            <span>1928</span>
+            <h3>1928</h3>
+            <p>Gründung als Wagnerei in Alpnach. Der Betrieb war von Anfang an lokal verankert.</p>
+          </div>
+        </article>
+        <article class="motion-card motion-card--timeline stagger-item">
+          <div class="motion-card__body">
+            <span>Später</span>
+            <h3>Später</h3>
+            <p>Ausbau zum kleinen Schreinerbetrieb mit Fokus auf praktische, individuelle Arbeiten.</p>
+          </div>
+        </article>
+        <article class="motion-card motion-card--timeline stagger-item">
+          <div class="motion-card__body">
+            <span>Heute</span>
+            <h3>Heute</h3>
+            <p>Weiterführung in der dritten Generation mit Werkstatt, Erfahrung und direktem Kundenkontakt.</p>
+          </div>
+        </article>
+      </section>
+
+      <section class="motion-section motion-section--contact" id="kontakt">
+        <div class="motion-contact-card reveal">
+          <span class="motion-label">Kontakt</span>
+          <h2>Direkt erreichbar für Besichtigung und Ausführung.</h2>
+          <p>Termine sind nach Vereinbarung auch ausserhalb der regulären Öffnungszeiten möglich.</p>
+          <dl class="motion-contact-list">
+            <div>
+              <dt>Adresse</dt>
+              <dd>A. von Atzigen AG, Brünigstrasse 13, 6055 Alpnach Dorf</dd>
+            </div>
+            <div>
+              <dt>Telefon</dt>
+              <dd>041 670 16 23</dd>
+            </div>
+            <div>
+              <dt>E-Mail</dt>
+              <dd>atzigen@gmail.com</dd>
+            </div>
+            <div>
+              <dt>Öffnungszeiten</dt>
+              <dd>Mo-Fr 07:15-12:00 / 13:15-17:15</dd>
+            </div>
+          </dl>
+          <div class="motion-hero-actions">
+            <a href="tel:+41416701623">Jetzt anrufen</a>
+            <a href="mailto:atzigen@gmail.com">E-Mail schreiben</a>
+          </div>
+        </div>
+
+        <div class="motion-contact-visual reveal">
+          <img class="parallax-media" src="./design-assets/ferienhaus-fertig.jpg" alt="Spezialauftrag Ferienhaus">
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="./vendor/gsap.min.js"></script>
+  <script src="./vendor/ScrollTrigger.min.js"></script>
+  <script src="./vendor/lenis.min.js"></script>
+  <script src="./app.js"></script>
+</body>
 </html>
