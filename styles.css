@@ -11,8 +11,8 @@
   --wood-dark: #392316;
   --accent: #d9bc8a;
   --shadow: 0 22px 50px rgba(39, 24, 14, 0.12);
-  --radius-lg: 18px;
-  --radius-md: 12px;
+  --radius-lg: 0;
+  --radius-md: 0;
   --container: min(1180px, calc(100vw - 40px));
 }
 
@@ -134,7 +134,7 @@ textarea {
 
 .site-nav__links a {
   padding: 10px 14px;
-  border-radius: 12px;
+  border-radius: 0;
   color: var(--text-soft);
   font-size: 0.95rem;
   transition: background-color 180ms ease, color 180ms ease;
@@ -150,7 +150,7 @@ textarea {
   display: none;
   width: 48px;
   height: 48px;
-  border-radius: 12px;
+  border-radius: 0;
   border: 1px solid var(--line);
   background: rgba(255, 255, 255, 0.58);
   color: var(--text);
@@ -170,7 +170,7 @@ textarea {
   justify-content: center;
   gap: 10px;
   padding: 13px 20px;
-  border-radius: 12px;
+  border-radius: 0;
   border: 1px solid transparent;
   font-weight: 700;
   font-size: 0.95rem;
@@ -319,7 +319,7 @@ textarea {
   width: 100%;
   aspect-ratio: 4 / 3;
   object-fit: cover;
-  border-radius: 12px;
+  border-radius: 0;
 }
 
 .hero-card__caption {
@@ -511,7 +511,7 @@ textarea {
   top: 0.78em;
   width: 7px;
   height: 7px;
-  border-radius: 4px;
+  border-radius: 0;
   background: linear-gradient(135deg, var(--wood), var(--accent));
 }
 
@@ -605,7 +605,7 @@ textarea {
 .page-hero__copy,
 .page-hero__visual {
   min-height: 420px;
-  border-radius: 20px;
+  border-radius: 0;
   overflow: hidden;
 }
 
@@ -753,7 +753,7 @@ textarea {
   width: var(--container);
   margin: 0 auto 92px;
   padding: 42px;
-  border-radius: 20px;
+  border-radius: 0;
   background:
     linear-gradient(135deg, rgba(64, 40, 25, 0.96), rgba(25, 15, 9, 0.96)),
     radial-gradient(circle at top right, rgba(220, 183, 121, 0.28), transparent 32%);
@@ -855,7 +855,7 @@ textarea {
     right: 20px;
     left: 20px;
     padding: 18px;
-    border-radius: 16px;
+    border-radius: 0;
     border: 1px solid var(--line);
     background: rgba(251, 246, 239, 0.98);
     box-shadow: var(--shadow);
@@ -891,8 +891,8 @@ textarea {
 @media (max-width: 640px) {
   :root {
     --container: min(100vw - 28px, 100%);
-    --radius-lg: 16px;
-    --radius-md: 10px;
+    --radius-lg: 0;
+    --radius-md: 0;
   }
 
   .site-header__inner {
