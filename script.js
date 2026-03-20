@@ -2,10 +2,21 @@ const header = document.querySelector(".site-header");
 const navToggle = document.querySelector(".site-nav__toggle");
 const navLinks = document.querySelector(".site-nav__links");
 const navLinkItems = document.querySelectorAll(".site-nav__links a");
+const heroShaderFrame = document.querySelector(".hero__shader");
+let headerTicking = false;
 
 function syncHeader() {
   if (!header) return;
   header.classList.toggle("is-scrolled", window.scrollY > 18);
+}
+
+function scheduleHeaderSync() {
+  if (headerTicking) return;
+  headerTicking = true;
+  window.requestAnimationFrame(() => {
+    headerTicking = false;
+    syncHeader();
+  });
 }
 
 function closeMenu() {
@@ -30,10 +41,52 @@ if (navToggle && navLinks) {
     if (window.innerWidth > 820) {
       closeMenu();
     }
+    scheduleHeaderSync();
   });
 }
 
-window.addEventListener("scroll", syncHeader, { passive: true });
+function setHeroShaderRunning(isRunning) {
+  if (!heroShaderFrame || !heroShaderFrame.contentWindow) return;
+  heroShaderFrame.contentWindow.postMessage(
+    {
+      type: "visibility",
+      running: isRunning
+    },
+    "*"
+  );
+}
+
+if (heroShaderFrame && "IntersectionObserver" in window) {
+  heroShaderFrame.addEventListener("load", () => {
+    const rect = heroShaderFrame.getBoundingClientRect();
+    setHeroShaderRunning(
+      !document.hidden && rect.bottom > 0 && rect.top < window.innerHeight
+    );
+  });
+
+  const shaderObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        setHeroShaderRunning(!document.hidden && entry.isIntersecting);
+      });
+    },
+    { threshold: 0.02 }
+  );
+
+  shaderObserver.observe(heroShaderFrame);
+
+  document.addEventListener("visibilitychange", () => {
+    if (document.hidden) {
+      setHeroShaderRunning(false);
+      return;
+    }
+
+    const rect = heroShaderFrame.getBoundingClientRect();
+    setHeroShaderRunning(rect.bottom > 0 && rect.top < window.innerHeight);
+  });
+}
+
+window.addEventListener("scroll", scheduleHeaderSync, { passive: true });
 syncHeader();
 
 const revealItems = document.querySelectorAll("[data-reveal]");

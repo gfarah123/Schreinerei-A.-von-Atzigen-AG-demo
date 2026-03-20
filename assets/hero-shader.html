@@ -19,6 +19,8 @@
 (function () {
   var canvas = document.getElementById('canvas');
   var prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var externallyPaused = false;
+  var frameHandle = 0;
 
   var gl = canvas.getContext('webgl', { alpha: true, antialias: false, preserveDrawingBuffer: false });
   if (!gl) return;
@@ -369,8 +371,14 @@
     }
   }
 
+  function requestRender() {
+    if (frameHandle) return;
+    frameHandle = requestAnimationFrame(render);
+  }
+
   function render(now) {
-    if (!running) { requestAnimationFrame(render); return; }
+    frameHandle = 0;
+    if (!running || externallyPaused) return;
     if (needsResize) resize();
     gl.uniform1f(uTime, prefersReduced ? 0.0 : now * 0.001);
     gl.uniform1f(uFoldSpeed, foldSpeedVal);
@@ -383,16 +391,17 @@
     }
     gl.uniform2f(uMouse, smoothMX, smoothMY);
     gl.drawArrays(gl.TRIANGLES, 0, 3);
-    requestAnimationFrame(render);
+    requestRender();
   }
 
   window.addEventListener('resize', function () {
     needsResize = true;
+    if (!externallyPaused) requestRender();
   });
 
   resize();
 
-  requestAnimationFrame(render);
+  requestRender();
 
   canvas.addEventListener('mousemove', function (e) {
     mouseX = e.clientX / canvas.clientWidth;
@@ -420,14 +429,28 @@
   // ── Pause when offscreen ──
   document.addEventListener('visibilitychange', function () {
     running = !document.hidden;
+    if (running && !externallyPaused) {
+      requestRender();
+    }
   });
 
   // ── PostMessage API for parameter control ──
   window.addEventListener('message', function (e) {
+    if (e.data && e.data.type === 'visibility') {
+      externallyPaused = !e.data.running;
+      if (!externallyPaused && running) {
+        requestRender();
+      }
+      return;
+    }
+
     if (e.data && e.data.type === 'param') {
       switch (e.data.name) {
         case 'FOLD_SPEED': foldSpeedVal = e.data.value; break;
         case 'LAYER_COUNT': layerCountVal = e.data.value; break;
+      }
+      if (!externallyPaused && running) {
+        requestRender();
       }
     }
   });
