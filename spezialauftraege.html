@@ -6,6 +6,7 @@
   <meta name="description" content="Spezialaufträge der Schreinerei A. von Atzigen AG: Camping-Häuser, Vorbauten, Verkleidungen und individuelle Holzkonstruktionen.">
   <title>Spezialaufträge | Schreinerei A. von Atzigen AG</title>
   <link rel="icon" href="assets/logo-atzigen.png">
+  <link rel="preload" href="assets/fonts/Manrope-Variable.ttf" as="font" type="font/ttf">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -13,7 +14,7 @@
     <header class="site-header">
       <div class="site-header__inner">
         <a class="brand" href="index.html" aria-label="Home">
-          <img src="assets/logo-atzigen.png" alt="Logo der A. von Atzigen AG">
+          <img src="assets/logo-atzigen.png" alt="Logo der A. von Atzigen AG" width="360" height="154" decoding="async">
           <span class="brand__text">
             <span class="brand__name">A. von Atzigen AG</span>
             <span class="brand__tag">Ihr Dorfschreiner in Alpnach</span>
@@ -50,7 +51,7 @@
           </div>
         </div>
         <div class="page-hero__visual" data-reveal>
-          <img src="assets/camping-haus.jpg" alt="Camping-Haus mit Holzverkleidung">
+          <img src="assets/camping-haus.jpg" alt="Camping-Haus mit Holzverkleidung" width="908" height="674" fetchpriority="high" decoding="async">
         </div>
       </section>
 
@@ -68,21 +69,21 @@
 
         <div class="gallery-grid">
           <article class="gallery-card" data-reveal>
-            <img src="assets/camping-umbau.jpg" alt="Umbau eines Camping-Hauses">
+            <img src="assets/camping-umbau.jpg" alt="Umbau eines Camping-Hauses" width="908" height="674" loading="lazy" fetchpriority="low" decoding="async">
             <div class="gallery-card__body">
               <strong>Umbauten</strong>
               Anpassungen an bestehende Bauten, sauber auf Konstruktion und Nutzung abgestimmt.
             </div>
           </article>
           <article class="gallery-card" data-reveal>
-            <img src="assets/camping-haus.jpg" alt="Holzhaus auf einem Campingplatz">
+            <img src="assets/camping-haus.jpg" alt="Holzhaus auf einem Campingplatz" width="908" height="674" loading="lazy" fetchpriority="low" decoding="async">
             <div class="gallery-card__body">
               <strong>Verkleidungen</strong>
               Holzverkleidungen und äussere Ausbauten mit ruhigem, stimmigem Erscheinungsbild.
             </div>
           </article>
           <article class="gallery-card" data-reveal>
-            <img src="assets/ferienhaus-fertig.jpg" alt="Fertiges Ferienhaus mit Vorbau">
+            <img src="assets/ferienhaus-fertig.jpg" alt="Fertiges Ferienhaus mit Vorbau" width="1920" height="1080" loading="lazy" fetchpriority="low" decoding="async">
             <div class="gallery-card__body">
               <strong>Vorbauten</strong>
               Konstruktionen, die zusätzlichen gedeckten Raum schaffen und sich in das Bestehende einfügen.
@@ -120,7 +121,7 @@
         <h2 class="section-title" data-reveal">Sonderanfertigungen aus unserer Werkstatt.</h2>
         <div class="reference-grid">
           <article class="reference-card" data-reveal>
-            <img src="assets/baumkantentisch.jpg" alt="Baumkantentisch">
+            <img src="assets/baumkantentisch.jpg" alt="Baumkantentisch" width="1920" height="973" loading="lazy" fetchpriority="low" decoding="async">
             <div class="reference-card__body">
               <div class="reference-card__meta">
                 <span>Einzelstück</span>
@@ -130,7 +131,7 @@
             </div>
           </article>
           <article class="reference-card" data-reveal>
-            <img src="assets/theke.jpg" alt="Theke aus Holz">
+            <img src="assets/theke.jpg" alt="Theke aus Holz" width="1920" height="1462" loading="lazy" fetchpriority="low" decoding="async">
             <div class="reference-card__body">
               <div class="reference-card__meta">
                 <span>Innenausbau</span>
@@ -140,7 +141,7 @@
             </div>
           </article>
           <article class="reference-card" data-reveal>
-            <img src="assets/raumteiler.jpg" alt="Raumteiler und Einbauten">
+            <img src="assets/raumteiler.jpg" alt="Raumteiler und Einbauten" width="1920" height="2560" loading="lazy" fetchpriority="low" decoding="async">
             <div class="reference-card__body">
               <div class="reference-card__meta">
                 <span>Ausbau</span>
@@ -176,6 +177,6 @@
       </div>
     </footer>
   </div>
-  <script src="script.js"></script>
+  <script src="script.js" defer></script>
 </body>
 </html>

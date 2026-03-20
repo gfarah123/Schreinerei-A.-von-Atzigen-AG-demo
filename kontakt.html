@@ -6,6 +6,7 @@
   <meta name="description" content="Kontakt zur Schreinerei A. von Atzigen AG in Alpnach Dorf. Telefon, E-Mail, Öffnungszeiten und Adresse.">
   <title>Kontakt | Schreinerei A. von Atzigen AG</title>
   <link rel="icon" href="assets/logo-atzigen.png">
+  <link rel="preload" href="assets/fonts/Manrope-Variable.ttf" as="font" type="font/ttf">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -13,7 +14,7 @@
     <header class="site-header">
       <div class="site-header__inner">
         <a class="brand" href="index.html" aria-label="Home">
-          <img src="assets/logo-atzigen.png" alt="Logo der A. von Atzigen AG">
+          <img src="assets/logo-atzigen.png" alt="Logo der A. von Atzigen AG" width="360" height="154" decoding="async">
           <span class="brand__text">
             <span class="brand__name">A. von Atzigen AG</span>
             <span class="brand__tag">Ihr Dorfschreiner in Alpnach</span>
@@ -51,7 +52,7 @@
           </div>
         </div>
         <div class="page-hero__visual" data-reveal>
-          <img src="assets/ferienhaus-fertig.jpg" alt="Fertiger Holzvorbau">
+          <img src="assets/ferienhaus-fertig.jpg" alt="Fertiger Holzvorbau" width="1920" height="1080" fetchpriority="high" decoding="async">
         </div>
       </section>
 
@@ -101,7 +102,7 @@
               </div>
             </div>
             <div class="contact-map__image">
-              <img src="assets/camping-haus.jpg" alt="Holzbau der Schreinerei A. von Atzigen AG">
+              <img src="assets/camping-haus.jpg" alt="Holzbau der Schreinerei A. von Atzigen AG" width="908" height="674" loading="lazy" fetchpriority="low" decoding="async">
             </div>
           </div>
         </div>
@@ -121,14 +122,14 @@
           </div>
           <div class="detail-grid">
             <article class="detail-card" data-reveal>
-              <img src="assets/waschtisch.jpg" alt="Massgefertigter Waschtisch">
+              <img src="assets/waschtisch.jpg" alt="Massgefertigter Waschtisch" width="1920" height="3413" loading="lazy" fetchpriority="low" decoding="async">
               <div class="detail-card__body">
                 <h3>Besichtigung vor Ort</h3>
                 <p>Bei Einbauten und Sonderlösungen ist ein Termin vor Ort oft der sinnvollste erste Schritt.</p>
               </div>
             </article>
             <article class="detail-card" data-reveal>
-              <img src="assets/tueren.jpg" alt="Türen und Schliessanlage">
+              <img src="assets/tueren.jpg" alt="Türen und Schliessanlage" width="1920" height="3413" loading="lazy" fetchpriority="low" decoding="async">
               <div class="detail-card__body">
                 <h3>Rasch erreichbar</h3>
                 <p>Auch bei Reparaturen oder Türproblemen ist der direkte Anruf meist der schnellste Weg.</p>
@@ -162,6 +163,6 @@
       </div>
     </footer>
   </div>
-  <script src="script.js"></script>
+  <script src="script.js" defer></script>
 </body>
 </html>

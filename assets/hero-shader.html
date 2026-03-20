@@ -19,8 +19,16 @@
 (function () {
   var canvas = document.getElementById('canvas');
   var prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var externallyPaused = false;
+  var frameHandle = 0;
 
-  var gl = canvas.getContext('webgl', { alpha: true, antialias: false, preserveDrawingBuffer: false });
+  var gl = canvas.getContext('webgl', {
+    alpha: true,
+    antialias: false,
+    desynchronized: true,
+    powerPreference: 'low-power',
+    preserveDrawingBuffer: false
+  });
   if (!gl) return;
 
   var vertSrc = [
@@ -355,7 +363,6 @@
 
   var dpr = Math.min(window.devicePixelRatio || 1, 2);
   var needsResize = true;
-  var running = true;
 
   function resize() {
     needsResize = false;
@@ -369,8 +376,17 @@
     }
   }
 
+  function canAnimate() {
+    return !prefersReduced && !document.hidden && !externallyPaused;
+  }
+
+  function requestRender() {
+    if (frameHandle) return;
+    frameHandle = requestAnimationFrame(render);
+  }
+
   function render(now) {
-    if (!running) { requestAnimationFrame(render); return; }
+    frameHandle = 0;
     if (needsResize) resize();
     gl.uniform1f(uTime, prefersReduced ? 0.0 : now * 0.001);
     gl.uniform1f(uFoldSpeed, foldSpeedVal);
@@ -383,52 +399,70 @@
     }
     gl.uniform2f(uMouse, smoothMX, smoothMY);
     gl.drawArrays(gl.TRIANGLES, 0, 3);
-    requestAnimationFrame(render);
+
+    if (canAnimate()) {
+      requestRender();
+    }
   }
 
   window.addEventListener('resize', function () {
     needsResize = true;
+    requestRender();
   });
 
   resize();
 
-  requestAnimationFrame(render);
+  requestRender();
 
   canvas.addEventListener('mousemove', function (e) {
     mouseX = e.clientX / canvas.clientWidth;
     mouseY = 1.0 - e.clientY / canvas.clientHeight;
+    requestRender();
   });
   canvas.addEventListener('mouseleave', function () {
     mouseX = -1.0; mouseY = -1.0;
+    requestRender();
   });
   canvas.addEventListener('touchstart', function (e) {
     e.preventDefault();
     var touch = e.touches[0];
     mouseX = touch.clientX / canvas.clientWidth;
     mouseY = 1.0 - touch.clientY / canvas.clientHeight;
+    requestRender();
   }, { passive: false });
   canvas.addEventListener('touchmove', function (e) {
     e.preventDefault();
     var touch = e.touches[0];
     mouseX = touch.clientX / canvas.clientWidth;
     mouseY = 1.0 - touch.clientY / canvas.clientHeight;
+    requestRender();
   }, { passive: false });
   canvas.addEventListener('touchend', function () {
     mouseX = -1.0; mouseY = -1.0;
+    requestRender();
   });
 
   // ── Pause when offscreen ──
   document.addEventListener('visibilitychange', function () {
-    running = !document.hidden;
+    requestRender();
   });
 
   // ── PostMessage API for parameter control ──
   window.addEventListener('message', function (e) {
-    if (e.data && e.data.type === 'param') {
+    if (!e.data) return;
+
+    if (e.data.type === 'visibility') {
+      externallyPaused = !e.data.running;
+      requestRender();
+      return;
+    }
+
+    if (e.data.type === 'param') {
       switch (e.data.name) {
         case 'FOLD_SPEED': foldSpeedVal = e.data.value; break;
         case 'LAYER_COUNT': layerCountVal = e.data.value; break;
       }
+      requestRender();
     }
   });
 })();
