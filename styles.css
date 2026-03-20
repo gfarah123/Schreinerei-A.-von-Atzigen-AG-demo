@@ -14,7 +14,6 @@
   --radius-lg: 0;
   --radius-md: 0;
   --container: min(1180px, calc(100vw - 40px));
-  --font-sans: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
 }
 
 *,
@@ -29,7 +28,7 @@ html {
 
 body {
   margin: 0;
-  font-family: var(--font-sans);
+  font-family: "Manrope", sans-serif;
   color: var(--text);
   background:
     radial-gradient(circle at top left, rgba(209, 171, 119, 0.18), transparent 32%),
@@ -110,7 +109,7 @@ textarea {
 }
 
 .brand__name {
-  font-family: var(--font-sans);
+  font-family: "Manrope", sans-serif;
   font-size: 1.1rem;
   font-weight: 800;
   letter-spacing: -0.02em;
@@ -208,10 +207,18 @@ textarea {
   background: #1d130e;
 }
 
+.hero__shader,
 .hero__overlay,
 .hero__grain {
   position: absolute;
   inset: 0;
+}
+
+.hero__shader {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  pointer-events: none;
 }
 
 .hero__overlay {
@@ -269,7 +276,7 @@ textarea {
 .info-card h3,
 .timeline__year,
 .page-intro h2 {
-  font-family: var(--font-sans);
+  font-family: "Manrope", sans-serif;
   font-weight: 800;
   line-height: 0.98;
   letter-spacing: -0.03em;
@@ -879,7 +886,6 @@ textarea {
   .hero {
     min-height: auto;
   }
-
 }
 
 @media (max-width: 640px) {
